@@ -66,7 +66,7 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
   local value = redis:hget(hash, result.id)
   if not value then
 	 if result.id == tonumber(AmirSbss) then
-	   text = text..'Rank : Amir Sbss \n\n'
+	   text = text..'Rank : mohammad12344 \n\n'
 	  elseif is_admin2(result.id) then
 	   text = text..'Rank : Admin \n\n'
 	  elseif is_owner2(result.id, extra.chat2) then
@@ -84,7 +84,7 @@ local function action_by_id(extra, success, result)  -- /info <ID> function
   local um_hash = 'msgs:'..result.id..':'..extra.chat2
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'Total messages : '..user_info_msgs..'\n\n'
-  text = text..'#Sbss_Team'
+  text = text..'@kingpowerobot'
   send_msg(extra.receiver, text, ok_cb,  true)
   else
   send_msg(extra.receiver, 'id not found.\nuse : /info @username', ok_cb, false)
@@ -123,7 +123,7 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
   local um_hash = 'msgs:'..result.from.id..':'..result.to.id
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
   text = text..'Total messages : '..user_info_msgs..'\n\n'
-  text = text..'#Sbss_Team'
+  text = text..'@kingpowerobot'
   send_msg(extra.receiver, text, ok_cb, true)
 end
 
