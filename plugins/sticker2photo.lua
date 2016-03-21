@@ -30,7 +30,7 @@ end
 return {
   patterns = {
  "^[!/](tophoto)$",
- "^به عکس",
+ "^به عکس$",
  "%[(document)%]",
   },
   run = run,
