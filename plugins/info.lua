@@ -137,7 +137,7 @@ local function run(msg, matches)
   local hash = 'usecommands:'..msg.from.id..':'..msg.to.id
   redis:incr(hash)
   if not is_sudo(msg) then
-    return "Only for Sudo"
+    return "فقط برای سودو"
   end
   local receiver = get_receiver(msg)
   local Reply = msg.reply_id
@@ -163,35 +163,35 @@ local function run(msg, matches)
    else
    Username = '----'
    end
-   local text = 'First name : '..(msg.from.first_name or '----')..'\n'
-   local text = text..'Last name : '..(msg.from.last_name or '----')..'\n'	
-   local text = text..'Username : '..Username..'\n'
-   local text = text..'ID : '..msg.from.id..'\n\n'
-   local hash = 'rank:'..msg.to.id..':variables'
+   local text = 'نام : '..(msg.from.first_name or '----')..'\n'
+   local text = text..'نام حانوادگی : '..(msg.from.last_name or '----')..'\n'	
+   local text = text..'یوزرنیم : '..Username..'\n'
+   local text = text..'ایدی : '..msg.from.id..'\n\n'
+   local hash = 'مقام:'..msg.to.id..':variables'
 	if hash then
 	  local value = redis:hget(hash, msg.from.id)
 	  if not value then
 		if msg.from.id == tonumber(AmirSbss) then
-		 text = text..'Rank : Amir Sbss \n\n'
+		 text = text..'مقام:mohammad1234 \n\n'
 		  send_document(get_receiver(msg), "/root/robot/amirsbss.webp", ok_cb, false)
 		elseif is_sudo(msg) then
-		 text = text..'Rank : Sudo \n\n'
+		 text = text..'مقام:سودو \n\n'
 			send_document(get_receiver(msg), "/root/robot/sudo.webp", ok_cb, false)
 		elseif is_admin(msg) then
-		 text = text..'Rank = Admin \n\n'
+		 text = text..'مقام:ادمین بات \n\n'
 			send_document(get_receiver(msg), "/root/robot/admin.webp", ok_cb, false)
                 elseif is_owner(msg) then
-		 text = text..'Rank : Owner \n\n'
+		 text = text..'مقام:اونر \n\n'
 			send_document(get_receiver(msg), "/root/robot/owner.webp", ok_cb, false)
 		elseif is_momod(msg) then
-		 text = text..'Rank : Moderator \n\n'
+		 text = text..'مقام:مدیر \n\n'
 			send_document(get_receiver(msg), "/root/robot/mod.webp", ok_cb, false)
 		else
-		 text = text..'Rank : Member \n\n'
+		 text = text..'مقام : اعضا \n\n'
 			send_document(get_receiver(msg), "/root/robot/mmbr.webp", ok_cb, false)
 		end
 	  else
-	   text = text..'Rank : '..value..'\n'
+	   text = text..'مقام : '..value..'\n'
 	  end
 	end
 	 local uhash = 'user:'..msg.from.id
@@ -200,10 +200,10 @@ local function run(msg, matches)
 	 user_info_msgs = tonumber(redis:get(um_hash) or 0)
 	 text = text..'Total messages : '..user_info_msgs..'\n\n'
     if msg.to.type == 'chat' then
-	 text = text..'Group name : '..msg.to.title..'\n'
-     text = text..'Group ID : '..msg.to.id
+	 text = text..'ایدی گروه : '..msg.to.title..'\n'
+     text = text..'ی : '..msg.to.id
     end
-	text = text..'\n\n#Sbss_Team'
+	text = text..'\n\n#kingpowerobot'
     return send_msg(receiver, text, ok_cb, true)
     end
   end
